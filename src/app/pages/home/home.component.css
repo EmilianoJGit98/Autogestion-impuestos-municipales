@@ -6,11 +6,32 @@
   width: 100%;
 }
 
-
-img {
-  width: 100%;
-  height: auto;
+.link-auto{
+  text-decoration: none;
+  font-weight: bold !important;
 }
+
+.link-inmo {
+  text-decoration: none;
+  font-weight: bold !important;
+}
+
+.link-auto:focus{
+  background: seagreen !important;
+  /* transition: ease all .4s; */
+  color: white !important;
+  border: none !important;
+}
+
+.inmueble:focus {
+  background: #264873 !important;
+  /* transition: ease all .4s; */
+  color: white !important;
+  border: none !important;
+}
+
+
+
 
 @supports (object-fit: cover) {
   .box img {
@@ -35,7 +56,7 @@ img {
 .ConteinerSpinner {
   padding: 5px !important;
   /* top: 50% !important; */
-  background: #f7f7f7d1 !important;
+  background: #f7f7f7 !important;
   /* background: red !important; */
   /* border-radius: 5px !important; */
 }
@@ -56,9 +77,9 @@ img {
 
 .textoSpinner {
   position: absolute;
-  left: 43.6% !important;
-  top: 50% !important;
-  color: #acacac !important;
+  /* left: 39% !important; */
+  /* top: 50% !important; */
+  color: #474747 !important;
   background: transparent !important;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px !important;
@@ -84,4 +105,19 @@ img {
   top: 35% !important;
   border-radius: 50% !important;
   box-shadow: 0px 0px 15px rgb(92, 92, 92);
+}
+
+
+.msjError{
+  margin-top: 20px !important;
+  background: #e91818 !important;
+  color: white !important;
+  padding: 3px !important;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold !important;
+}
+
+.contentInputCuit{
+  margin-top: 20% !important;
 }

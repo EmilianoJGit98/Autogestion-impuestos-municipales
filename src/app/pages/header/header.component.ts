@@ -7,33 +7,27 @@ import { AuthTokenService } from '../../services/auth-token.service';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   Token: any = '';
 
-  constructor(
-    private tokenService: AuthTokenService,
-    private router: Router
-  ){
+  constructor(private tokenService: AuthTokenService, private router: Router) {}
 
-  }
-
-  ngOnInit(){
+  ngOnInit() {
     this.validaToken();
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
     this.tokenService.logout();
-    this.router.navigateByUrl("login");
+    this.router.navigateByUrl('login');
   }
 
-  validaToken(){
+  validaToken() {
     this.Token = this.tokenService.getAccessToken();
     if (this.Token == null) {
-      this.router.navigateByUrl("login");
+      this.router.navigateByUrl('login');
     } else {
     }
   }
-
 }

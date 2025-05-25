@@ -1,0 +1,78 @@
+<!-- <div *ngIf="estadoCargaEventos" class="row ConteinerPreloader m-0">
+  <div class="col-12 ConteinerSpinner text-center">
+    <img class="imgSpinner" src="./img/logoMunicipalidadFsa.png" width="100px" height="100px" />
+    <div class="spinner mb-3"></div>
+    <h4 class="fw-bold text-white textoSpinner" style="font-weight: bold !important">
+      Buscando datos, aguarde unos segundos...
+    </h4>
+  </div>
+</div> -->
+
+<div *ngIf="estadoCargaEventos" class="row ConteinerPreloader m-0">
+  <div
+    class="col-12 ConteinerSinImpuestos text-center d-flex flex-column align-items-center justify-content-center h-100">
+    <img class="imgSpinner text-center" src="./img/logoMunicipalidadFsa.png" width="100px" height="100px" />
+    <h4 class="fw-bold text-white textoSinImpuestos mt-4 w-100 text-center" style="font-weight: bold !important">
+      Buscando datos, aguarde unos instantes...
+    </h4>
+    <div class="spinner mb-3"></div>
+  </div>
+</div>
+
+<div *ngIf="sinImpuestos" class="row ConteinerPreloader m-0">
+  <div
+    class="col-12 ConteinerSinImpuestos text-center d-flex flex-column align-items-center justify-content-center h-100">
+    <h1 class="text-danger imgSinImpuesto"><i class="fas fa-times"></i></h1>
+    <h4 class="fw-bold text-white textoSinImpuestos mt-4" style="font-weight: bold !important">
+      {{mensajeError}}.. <br>
+      <button class="btn btn-danger fs-alto mt-3 shadow fw-bold me-3" (click)="linkAutomotores()">
+        Volver a la pagina anterior
+      </button>
+      <button
+        *ngIf="mensajeError == 'Error: Tiempo de conexión excedido. Asegúrate de que el servidor esté disponible.'"
+        (click)="recargarPagina()" class="btn btn-primary fs-alto mt-3 shadow fw-bold c-pointer"> Reintentar
+      </button>
+    </h4>
+  </div>
+</div>
+
+
+<h4 class="text-center fw-bold titleImpuesto mt-5">PATENTE SELECCIONADA: {{Patente}}</h4>
+
+<!-- <div class="row d-flex justify-content-center containerImpuestos" *ngIf="!estadoCargaEventos"> -->
+<div class="row d-flex justify-content-center containerImpuestos">
+  <div class="col-3">
+    <a class="c-pointer" (click)="linkAutomotores()">
+      <div class="card text-start shadow bg-danger border border-0">
+        <div class="card-body">
+          <h4 class="card-title mt-3 mb-5 fw-bold m-0 text-white fs-med">PAGINAR ANTERIOR</h4>
+          <h5 class="m-0 fs-alto"><i class="fas fas fa-arrow-left text-white"></i></h5>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-3" *ngFor="let deuda of DeudaAutomotor" (click)="linkLiquidacion(deuda.solodeuda, 1)">
+    <button class="buttonClass c-pointer">
+      <!-- routerLink="/deuda-automotor/{{auto.idpat}}/{{cuit}}" -->
+      <div class="card text-start shadow border border-2">
+        <div class="card-body">
+          <h4 class="card-title mt-1 fw-bold text-success m-0">Deuda</h4>
+          <h5>${{deuda.solodeuda}}</h5>
+          <h5 class="mb-1 fs-alto"><i class="fas fa-dollar-sign text-success"></i></h5>
+        </div>
+      </div>
+    </button>
+  </div>
+  <div class="col-3" *ngFor="let deuda of DeudaAutomotor">
+    <button class="buttonClass c-pointer" (click)="linkLiquidacion(deuda.totalcondesc, 2)">
+      <!-- routerLink="/deuda-automotor/{{auto.idpat}}/{{cuit}}" -->
+      <div class="card text-start shadow border border-2">
+        <div class="card-body">
+          <h4 class="card-title mt-1 fw-bold text-success m-0">Deuda + Total</h4>
+          <h5>${{deuda.totalcondesc}}</h5>
+          <h5 class="mb-1 fs-alto"><i class="fas fa-dollar-sign text-success"></i></h5>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

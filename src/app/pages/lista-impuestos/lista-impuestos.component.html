@@ -1,0 +1,50 @@
+<!-- <div class="container"> -->
+<div *ngIf="sinImpuestos" class="row ConteinerPreloader m-0">
+  <div
+    class="col-12 ConteinerSinImpuestos text-center d-flex flex-column align-items-center justify-content-center h-100">
+    <h1 class="text-danger imgSinImpuesto"><i class="fas fa-times"></i></h1>
+    <h4 class="fw-bold text-white textoSinImpuestos mt-4" style="font-weight: bold !important">
+      {{mensajeError}}.. <br>
+      <button class="btn btn-danger fs-alto mt-3 shadow fw-bold me-3" (click)="linkImpuestos()">
+        Ingresar nuevos datos
+      </button>
+    </h4>
+  </div>
+</div>
+<div *ngIf="!sinImpuestos" class="row d-flex justify-content-center containerImpuestos">
+  <div class="col-12 d-flex justify-content-center align-items-center mb-5">
+    <h5>BIENVENIDO/A {{NombreCompleto}}</h5>
+  </div>
+  <div class="col-3">
+    <a routerLink="/">
+      <div class="card text-start shadow bg-danger">
+        <div class="card-body">
+          <h4 class="card-title mt-3 mb-5 fw-bold m-0 text-white fs-med">VOLVER AL INICIO</h4>
+          <h5 class="m-0 fs-alto"><i class="fas fas fa-arrow-left text-white"></i></h5>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-4">
+    <button class="buttonClass" (click)="linkAutomotores()">
+      <div class="card text-start shadow">
+        <div class="card-body">
+          <h4 class="card-title mt-3 mb-5 fw-bold text-success m-0">Automotores</h4>
+          <h5 class="m-0 fs-alto"><i class="fas fa-car-side text-success"></i></h5>
+        </div>
+      </div>
+    </button>
+
+  </div>
+  <div class="col-4">
+    <button class="buttonClass" (click)="linkInmuebles()">
+      <div class="card text-start shadow">
+        <div class="card-body">
+          <h4 class="card-title mt-3 mb-5 fw-bold text-primary">Inmuebles</h4>
+          <h5 class="m-0 fs-alto"><i class="fas fa-landmark text-primary"></i></h5>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+<!-- </div> -->

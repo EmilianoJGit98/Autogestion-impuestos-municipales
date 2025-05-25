@@ -25,6 +25,15 @@ li > a:hover{
   color: white;
 } */
 
+.navbar{
+  background: #264873;
+  color: white !important;
+}
+
+.navbar-brand{
+  color: white !important;
+}
+
 
 .nav-item{
   background: #e2e2e2;

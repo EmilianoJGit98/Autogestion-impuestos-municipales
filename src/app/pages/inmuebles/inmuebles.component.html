@@ -1,0 +1,98 @@
+<!-- <div *ngIf="estadoCargaEventos" class="row ConteinerPreloader m-0">
+  <div class="col-12 ConteinerSpinner text-center">
+    <img class="imgSpinner" src="./img/logoMunicipalidadFsa.png" width="100px" height="100px" />
+    <div class="spinner mb-3"></div>
+    <h4 class="fw-bold text-white textoSpinner" style="font-weight: bold !important">
+      Buscando datos, aguarde unos segundos...
+    </h4>
+  </div>
+</div> -->
+
+<div *ngIf="estadoCargaEventos" class="row ConteinerPreloader m-0">
+  <div
+    class="col-12 ConteinerSinImpuestos text-center d-flex flex-column align-items-center justify-content-center h-100">
+    <img class="imgSpinner text-center" src="./img/logoMunicipalidadFsa.png" width="100px" height="100px" />
+    <h4 class="fw-bold text-white textoSinImpuestos mt-4 w-100 text-center" style="font-weight: bold !important">
+      Buscando datos, aguarde unos instantes...
+    </h4>
+    <div class="spinner mb-3"></div>
+  </div>
+</div>
+
+<div *ngIf="sinImpuestos" class="row ConteinerPreloader m-0">
+  <div
+    class="col-12 ConteinerSinImpuestos text-center d-flex flex-column align-items-center justify-content-center h-100">
+    <h1 class="text-danger imgSinImpuesto"><i class="fas fa-times"></i></h1>
+    <h4 class="fw-bold text-white textoSinImpuestos mt-4" style="font-weight: bold !important">
+      {{mensajeError}}.. <br>
+      <button class="btn btn-danger fs-alto mt-3 shadow fw-bold me-3" (click)="linkImpuestos()">
+        Volver a la pagina anterior
+      </button>
+      <button
+        *ngIf="mensajeError == 'Error: Tiempo de conexión excedido. Asegúrate de que el servidor esté disponible.'"
+        (click)="recargarPagina()" class="btn btn-primary fs-alto mt-3 shadow fw-bold c-pointer"> Reintentar
+      </button>
+    </h4>
+  </div>
+</div>
+
+
+
+
+<h4 class="text-center fw-bold titleImpuesto">Seleccione el Inmueble que desee generar la liquidacion</h4>
+
+<div class="row d-flex justify-content-center containerImpuestos">
+
+
+  <div class="col-3">
+    <a class="c-pointer" (click)="linkImpuestos()">
+      <div class="card text-start shadow bg-danger border border-0">
+        <div class="card-body">
+          <h4 class="card-title mt-3 mb-5 fw-bold m-0 text-white fs-med">VOLVER AL INICIO</h4>
+          <h5 class="m-0 fs-alto"><i class="fas fas fa-arrow-left text-white"></i></h5>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="col-3" *ngFor="let partida of Inmuebles">
+    <!-- <button class="buttonClass c-pointer border border-4 border-success" (click)="deudaInmueble(partida.partida)"> -->
+    <!-- <button class="buttonClass c-pointer card text-start shadow py-2" (click)="deudaInmueble(partida.partida)"> -->
+    <button class="card buttonClass c-pointer text-start shadow px-3 py-4 rounded border border-2 c-pointer w-100"
+      (click)="deudaInmueble(partida.partida)">
+      <span class="mt-0 fw-bold text-success m-0 fs-med w-100 mb-3"><i class="fas fa-home"></i>
+        PARTIDA: {{ partida.partida }}</span>
+      <span class="mt-0 fw-bold text-dark m-0 fs-min w-100 text-truncate mb-2">Barrio: {{ partida.domBario
+        }}</span>
+      <span *ngIf="partida.domManzana && partida.domManzana != '0'" class="mt-0 mb-0 fw-bold m-0 text-dark fs-min">Mz:
+        {{ partida.domManzana}} </span>
+      <span *ngIf="partida.domCasa && partida.domCasa != '0'" class="fw-bold text-dark m-0 fs-min py-0 w-100">N°
+        Casa: {{
+        partida.domCasa }} </span>
+
+      <span *ngIf="partida.domCalle && partida.domCalle != '0'"
+        class="fw-bold text-dark m-0 fs-min py-0 w-100 text-truncate">Calle: {{
+        partida.domCalle }} </span>
+      <span *ngIf="partida.domAltura && partida.domAltura != '0'"
+        class="fw-bold text-dark m-0 fs-min py-0 w-100">Altura: {{
+        partida.domAltura }} </span>
+      <span *ngIf="partida.domPiso && partida.domPiso != '0'" class="fw-bold text-dark m-0 fs-min py-0 w-100">Piso:
+        {{
+        partida.domPiso }} </span>
+      <span *ngIf="partida.domDepto && partida.domDepto !== '0'" class="fw-bold text-dark m-0 fs-min py-0 w-100">Depto:
+        {{
+        partida.domDepto }} </span>
+      <span *ngIf="partida.domSector && partida.domSector != '0'"
+        class="fw-bold text-dark m-0 fs-min py-0 w-100">Sector: {{
+        partida.domSector }} </span>
+      <span *ngIf="partida.domTorre && partida.domTorre != '0'" class="fw-bold text-dark m-0 fs-min py-0 w-100">Torre:
+        {{
+        partida.domTorre }} </span>
+      <span *ngIf="partida.domParcela && partida.domParcela != '0'"
+        class="fw-bold text-dark m-0 fs-min py-0 w-100">Parcela: {{
+        partida.domParcela }} </span>
+    </button>
+    <!-- </button> -->
+    <!-- </button> -->
+  </div>

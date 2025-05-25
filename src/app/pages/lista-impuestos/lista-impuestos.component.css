@@ -1,0 +1,55 @@
+.containerImpuestos{
+  margin-top: 15% !important;
+  height: 0px !important;
+}
+
+h4{
+  font-family: 'Montserrat', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.card{
+  border-left: solid 3px #777777;
+  border-bottom: solid 3px #777777;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+.buttonClass{
+  border: none !important;
+  width: 100% !important;
+  background: transparent !important;
+}
+
+.ConteinerPreloader {
+  position: fixed !important;
+  left: 0px !important;
+  top: 0px !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9999 !important; }
+
+    .ConteinerSinImpuestos {
+      display: flex;
+      /* Usar flexbox para centrar */
+      align-items: center;
+      /* Centrado vertical */
+      justify-content: center;
+      /* Centrado horizontal */
+      flex-direction: column;
+      /* Apilar elementos verticalmente */
+      padding: 5px !important;
+      background: #f7f7f7 !important;
+      height: 100%;
+      /* Asegúrate de usar todo el alto */ }
+
+
+            .textoSinImpuestos {
+              color: #474747 !important;
+              font-family: 'Montserrat', sans-serif;
+              font-size: 16px !important;
+              text-align: center;
+              /* Asegurar que se centre el texto */
+            }

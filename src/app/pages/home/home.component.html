@@ -2,140 +2,47 @@
   <div class="col-12 ConteinerSpinner text-center">
     <img class="imgSpinner" src="./img/logoMunicipalidadFsa.png" width="100px" height="100px" />
     <div class="spinner mb-3"></div>
-    <h4 class="fw-bold text-white textoSpinner" style="font-weight: bold !important">
-      Cargando contenido
-    </h4>
+    <!-- <h4 class="fw-bold text-white textoSpinner w-100 text-center" style="font-weight: bold !important">
+      Preparando sistemas..
+    </h4> -->
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <button type="button" class="btn btn-dark d-flex align-items-center fw-bold mb-1" (click)="mostrarInactivos()">
-        <!-- <mat-icon class="text-white m-0 me-1">{{ iconEmpty }}</mat-icon> -->
-        {{ msjVista }}
-      </button>
+<!-- <a class="rounded-pill bg-danger text-white mt-3 p-2 fs-alto fw-bold px-3 border-0 me-3" routerLink="/hub"
+  style="text-decoration: none;">volver <i class="fas fa-arrow-left"></i></a>
+<label class="rounded-pill bg-success text-white mt-3 p-2 fs-alto fw-bold px-3">Automotores</label> -->
+
+<form class="row mt-0 px-1" [formGroup]="inputCuit">
+  <div class="row d-flex justify-content-center contentInputCuit">
+    <label class="text-center w-100 fs-med fw-bold mb-3">Ingrese su cuit o dni, sin puntos o guiones y luego presiones
+      el
+      botón buscar</label>
+    <div class="col-5">
+
+      <input type="text" formControlName="cuit"
+        class="form-control rounded-pill border border-dark p-4 inputBuscador shadow" autocomplete="off">
+
+      <div *ngIf="
+                              inputCuit.get('cuit')?.invalid &&
+                              inputCuit.get('cuit')?.touched
+                            ">
+        <div class="ms-2 msjError" *ngIf="inputCuit.get('cuit')?.errors?.['maxLength']">
+          El DNI o CUIT no puede tener más de 11 dígitos.
+        </div>
+        <div class="ms-2 msjError" *ngIf="inputCuit.get('cuit')?.errors?.['minLength']">
+          El DNI o CUIT no puede tener menos de 11 dígitos.
+        </div>
+        <div class="ms-2 msjError" *ngIf="inputCuit.get('cuit')?.errors?.['required']">
+          El DNI o CUIT es obligatorio.
+        </div>
+        <div class="ms-2 msjError" *ngIf="inputCuit.get('cuit')?.errors?.['pattern']">
+          El DNI o CUIT solo puede contener dígitos númericos.
+        </div>
+      </div>
     </div>
-    <div class="col-4">
-      <!-- <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Buscar</mat-label>
-        <input
-          matInput
-          class=""
-          [(ngModel)]="filterValue"
-          (ngModelChange)="applyFilter()"
-          placeholder="Buscar por nombre, email o ciudad"
-        />
-      </mat-form-field> -->
+    <div class="col-2">
+      <button class="btn btn-success p-4 rounded-pill shadow fw-bold" (click)="BuscarContribuyente()"><i
+          class="fas fa-search me-3"></i>Buscar</button>
     </div>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 shadow">
-    <ng-container matColumnDef="NroComprobante">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">N° COMPR</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.NroComprobante }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="LiberacionPago">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">LIBERACIÓN</th>
-      <td mat-cell class="fs-min-" *matCellDef="let element">
-        {{ element.LiberacionPago }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="money_release_status">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">ESTATUS</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.money_release_status }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="nomraz">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">CONTRIBUYENTE</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.nomraz }}
-      </td>
-    </ng-container>
-
-    <!-- <ng-container matColumnDef="codbarf">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">codbarf</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">{{ element.codbarf }}</td>
-    </ng-container> -->
-
-    <ng-container matColumnDef="puntov">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">PUNTO V.</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.puntov }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fechahora">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">FECHA HORA</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.fechahora }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="idrubro">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">ID RUBRO</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.idrubro }}
-      </td>
-    </ng-container>
-
-    <!-- <ng-container matColumnDef="idSubRubro">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">idSubRubro</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">{{ element.idSubRubro }}</td>
-    </ng-container> -->
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">ITEM</th>
-      <td mat-cell class="fs-min-" *matCellDef="let element">
-        {{ element.title }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="unit_price">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">PRECIO U.</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.unit_price }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="importado">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">IMPORTADO</th>
-      <td mat-cell class="fs-min" *matCellDef="let element">
-        {{ element.importado }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fecha_importacion">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">
-        fecha importacion
-      </th>
-      <td mat-cell class="fs-min-" *matCellDef="let element">
-        {{ element.fecha_importacion }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="importar">
-      <th mat-header-cell *matHeaderCellDef class="fw-bold">Importar</th>
-      <td mat-cell class="fs-min text-center" *matCellDef="let element">
-        <button class="btn btn-dark fw-bold text-white pe-3" *ngIf="element.importado == 0">
-          <i class="fas fa-file-import"></i>
-        </button>
-
-        <button class="btn border-0 text-success fw-bold px-3 disabled fs-med" *ngIf="element.importado == 1">
-          <i class="fas fa-check"></i>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <mat-paginator [length]="dataSource.data.length" [pageSize]="10" [pageSizeOptions]="[2, 10, 25, 100]"
-    aria-label="Select page" class="shadow">
-  </mat-paginator>
-</div>
+</form>
