@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-@font-face {
+
+/* @font-face {
   font-family: 'Font Awesome 5 Free';
   font-style: normal;
   font-weight: 400;
   src: url('/webfonts/fa-regular-400.woff2') format('woff2');
-}
-
+} */
 
 /* @import "~bootstrap-icons/font/bootstrap-icons.css"; */
 
 * {
-  font-family: "Montserrat", sans-serif ;
+  font-family: "Montserrat", sans-serif;
 }
 
-.material-icons{
+.material-icons {
   font-family: 'Material Icons';
 }
 
@@ -39,28 +39,41 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.family-montserrat{
+.family-montserrat {
   font-family: 'Montserrat', sans-serif !important;
 }
 
-.bg-azul{
+.bg-azul {
   background: #07456B !important;
   color: white !important;
 }
 
-.color-azul{
+.color-azul {
   color: #07456B !important;
 }
 
-.c-pointer{
+.c-pointer {
   cursor: pointer !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
 
 
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

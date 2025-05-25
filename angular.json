@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "importanciones-mercadopago": {
+    "autogestion-impuestos-municipales": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/importanciones-mercadopago",
+            "outputPath": "dist/autogestion-impuestos-municipales",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -30,7 +30,6 @@
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
@@ -40,8 +39,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "10mB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -63,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "importanciones-mercadopago:build:production"
+              "buildTarget": "autogestion-impuestos-municipales:build:production"
             },
             "development": {
-              "buildTarget": "importanciones-mercadopago:build:development"
+              "buildTarget": "autogestion-impuestos-municipales:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -93,7 +92,6 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.css"
             ],
             "scripts": []
