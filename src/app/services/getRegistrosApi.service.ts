@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environment/environment.prod';
 import { ActividadAsignadaInterface } from '../models/actividad-asignada.model';
 import { SubRubroInterface } from '../models/subrurbros.model';
 import { RubroInterface } from '../models/rubros.model';

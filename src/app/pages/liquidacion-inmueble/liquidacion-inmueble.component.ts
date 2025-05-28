@@ -25,6 +25,7 @@ export class LiquidacionInmuebleComponent {
   respuestaCabecera: any = null;
   respuestaDetalle: any[] = [];
   estadoCargaEventos: boolean = false;
+  estadoCargaLiquidacion: boolean = false;
   mensajeError: any = null;
 
   respuestaLiquidacion: any = null;
@@ -84,6 +85,8 @@ export class LiquidacionInmuebleComponent {
     let pago_tipo = tipo_pago;
     let importe_deuda = importe;
 
+    this.estadoCargaLiquidacion = true;
+
     this.servTasasMunicipales
       .generarLiquidacionObjeto(
         objeto,
@@ -106,34 +109,16 @@ export class LiquidacionInmuebleComponent {
           // Guardar detalles
           this.respuestaDetalle = data.detalle || [];
 
-          // if (
-          //   this.respuestaLiquidacion.detalle &&
-          //   Array.isArray(this.respuestaLiquidacion.detalle)
-          // ) {
-          //   this.respuestaLiquidacion.detalle.forEach((detalle: any) => {
-          //     // Variables para cada detalle
-          //     const idLiquidacion = detalle.idLiquidacion;
-          //     const periodoCuota = detalle.periodo_cuota;
-          //     const recibo = detalle.recibo;
-          //     const puntoV = detalle.puntov;
-          //     const importeTotal = detalle.importe_total;
-          //     const descuento = detalle.Descuento;
-          //   });
-          // }
-
-          // this.codigoBarra = data.Cabecera[0].codbarf;
-
-          // console.log(this.codigoBarra);
-
           if (Array.isArray(data.cabecera) && data.cabecera.length > 0) {
             this.respuestaCabecera = data.cabecera[0];
             this.codigoBarra = this.respuestaCabecera.codbarf.trim();
           } else if (data.cabecera) {
             this.codigoBarra = data.cabecera.codbarf.trim();
           }
+          this.estadoCargaLiquidacion = false;
         },
         (error: HttpErrorResponse) => {
-          //this.estadoCargaEventos = false;
+          this.estadoCargaLiquidacion = false;
           this.mensajeError = 'Error al procesar la solicitud.';
           console.error('Error en la solicitud:', error);
         }

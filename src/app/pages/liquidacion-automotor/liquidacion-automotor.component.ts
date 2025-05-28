@@ -20,6 +20,7 @@ export class LiquidacionAutomotorComponent {
   importe: number = 0;
   tipo_pago: number = 0;
   rubro: number = 11112;
+  estadoCargaLiquidacion: boolean = false;
   estadoCargaEventos: boolean = false;
 
   respuestaCabecera: any = null;
@@ -82,7 +83,7 @@ export class LiquidacionAutomotorComponent {
     let IDrubro = rubro;
     let pago_tipo = tipo_pago;
     let importe_deuda = importe;
-
+    this.estadoCargaLiquidacion = true;
     this.servTasasMunicipales
       .generarLiquidacionObjeto(
         objeto,
@@ -124,9 +125,11 @@ export class LiquidacionAutomotorComponent {
             this.codigoBarra = data.cabecera.codbarf.trim();
             // console.log(this.codigoBarra);
           }
+
+          this.estadoCargaLiquidacion = false;
         },
         (error: HttpErrorResponse) => {
-          //this.estadoCargaEventos = false;
+          this.estadoCargaLiquidacion = false;
           this.mensajeError = 'Error al procesar la solicitud.';
           console.error('Error en la solicitud:', error);
         }
